@@ -10,7 +10,7 @@ using namespace std;
 // Structure for A* algorithm nodes
 struct Node {
     int x, y;
-    double f, g, h;  // f = g + h, g = cost from start, h = heuristic to goal
+    double g, h, f;  // Fixed order: g, h, f (f = g + h)
     pair<int, int> parent;
     
     Node(int x, int y, double g, double h, pair<int, int> parent) 

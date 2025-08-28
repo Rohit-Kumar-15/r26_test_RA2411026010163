@@ -1,6 +1,10 @@
 #include "gridmap.h"
 #include <iostream>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 using namespace std;
 
 Gridmapper::Gridmapper(GPS origin, double cellsize, int rows, int cols)

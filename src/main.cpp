@@ -7,6 +7,10 @@
 #include <iostream>
 #include <string>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 using namespace std;
 
 // Helper to convert angle to unit direction
@@ -17,8 +21,8 @@ pair<double, double> directionFromAngle(double angle_deg) {
 
 int main(int argc, char *argv[]) {
 
-  if (argc < 2) {
-    cerr << "Usage: " << argv[0] << " <gps_data_file>" << endl;
+  if (argc < 3) {
+    cerr << "Usage: " << argv[0] << " <gps_data_file> <output_file>" << endl;
     return 1;
   }
 
@@ -58,6 +62,12 @@ int main(int argc, char *argv[]) {
   // Path planning
   Planner planner(grid.getGrid());
   auto path = planner.pathplanning(start, goal);
+
+  // Check if path was found
+  if (path.empty()) {
+    cout << "Error: No path found!" << endl;
+    return 1;
+  }
 
   // print planned path
   cout << "Planned Path:" << endl;
